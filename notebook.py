@@ -255,13 +255,13 @@ fatalities_total_date_Singapore = train[(train['Country/Region']=='Singapore') &
 total_date_Singapore = confirmed_total_date_Singapore.join(fatalities_total_date_Singapore)
 
 italy = [i for i in total_date_Italy.ConfirmedCases['sum'].values]
-italy_30 = italy[0:50] 
+italy_30 = italy[0:50]
 spain = [i for i in total_date_Spain.ConfirmedCases['sum'].values]
-spain_30 = spain[0:50] 
+spain_30 = spain[0:50]
 UK = [i for i in total_date_UK.ConfirmedCases['sum'].values]
-UK_30 = UK[0:50] 
+UK_30 = UK[0:50]
 singapore = [i for i in total_date_Singapore.ConfirmedCases['sum'].values]
-singapore_30 = singapore[0:50] 
+singapore_30 = singapore[0:50]
 
 
 # Plots
@@ -630,11 +630,11 @@ all_data.drop('Country (or dependency)', inplace=True, axis=1)
 all_data['Country/Region'] = le.fit_transform(all_data['Country/Region'])
 number_c = all_data['Country/Region']
 countries = le.inverse_transform(all_data['Country/Region'])
-country_dict = dict(zip(countries, number_c)) 
+country_dict = dict(zip(countries, number_c))
 all_data['Province/State'] = le.fit_transform(all_data['Province/State'])
 number_p = all_data['Province/State']
 province = le.inverse_transform(all_data['Province/State'])
-province_dict = dict(zip(province, number_p)) 
+province_dict = dict(zip(province, number_p))
 display(all_data)
 
 '''
@@ -692,12 +692,12 @@ This first model is very simple, and only elemental features will be considered:
 3. **Infinites**. Replace infinites from the logarithm
 4. **Train/test split**. Split into train/valid/test
 5. **Prediction**. Linear Regression, training country by country and joining data
-6. **Submit**. Submit results in the correct format, and applying exponential to reverse log transformation 
+6. **Submit**. Submit results in the correct format, and applying exponential to reverse log transformation
 '''
 
 # Filter selected features
 data = all_data.copy()
-features = ['Id', 'ForecastId', 'Country/Region', 'Province/State', 'ConfirmedCases', 'Fatalities', 
+features = ['Id', 'ForecastId', 'Country/Region', 'Province/State', 'ConfirmedCases', 'Fatalities',
        'Day_num', 'Day', 'Month', 'Year', 'Long', 'Lat']
 data = data[features]
 
@@ -754,8 +754,8 @@ def get_submission(df):
     prediction_2 = [int(item) for item in list(map(round, prediction_2))]
 
     submission = pd.DataFrame({
-        "ForecastId": df['ForecastId'].astype('int32'), 
-        "ConfirmedCases": prediction_1, 
+        "ForecastId": df['ForecastId'].astype('int32'),
+        "ConfirmedCases": prediction_1,
         "Fatalities": prediction_2
     })
     submission.to_csv('submission.csv', index=False)
@@ -784,7 +784,7 @@ X_test_check['Target'] = pred
 X_final_check = pd.concat([X_train_check, X_test_check])
 
 # Select train (real) data from March 1 to March 22nd
-dates_list = ['2020-03-01', '2020-03-02', '2020-03-03', '2020-03-04', '2020-03-05', '2020-03-06', '2020-03-07', '2020-03-08', '2020-03-09', 
+dates_list = ['2020-03-01', '2020-03-02', '2020-03-03', '2020-03-04', '2020-03-05', '2020-03-06', '2020-03-07', '2020-03-08', '2020-03-09',
                  '2020-03-10', '2020-03-11','2020-03-12','2020-03-13','2020-03-14','2020-03-15','2020-03-16','2020-03-17','2020-03-18',
                  '2020-03-19','2020-03-20','2020-03-21','2020-03-22','2020-03-23']
 
@@ -834,7 +834,7 @@ X_test_check['Target'] = pred
 X_final_check = pd.concat([X_train_check, X_test_check])
 
 # Select train (real) data from March 1 to March 22nd
-dates_list = ['2020-03-01', '2020-03-02', '2020-03-03', '2020-03-04', '2020-03-05', '2020-03-06', '2020-03-07', '2020-03-08', '2020-03-09', 
+dates_list = ['2020-03-01', '2020-03-02', '2020-03-03', '2020-03-04', '2020-03-05', '2020-03-06', '2020-03-07', '2020-03-08', '2020-03-09',
                  '2020-03-10', '2020-03-11','2020-03-12','2020-03-13','2020-03-14','2020-03-15','2020-03-16','2020-03-17','2020-03-18',
                  '2020-03-19','2020-03-20','2020-03-21','2020-03-22','2020-03-23']
 
@@ -884,7 +884,7 @@ X_test_check['Target'] = pred
 X_final_check = pd.concat([X_train_check, X_test_check])
 
 # Select train (real) data from March 1 to March 22nd
-dates_list = ['2020-03-01', '2020-03-02', '2020-03-03', '2020-03-04', '2020-03-05', '2020-03-06', '2020-03-07', '2020-03-08', '2020-03-09', 
+dates_list = ['2020-03-01', '2020-03-02', '2020-03-03', '2020-03-04', '2020-03-05', '2020-03-06', '2020-03-07', '2020-03-08', '2020-03-09',
                  '2020-03-10', '2020-03-11','2020-03-12','2020-03-13','2020-03-14','2020-03-15','2020-03-16','2020-03-17','2020-03-18',
                  '2020-03-19','2020-03-20','2020-03-21','2020-03-22','2020-03-23']
 
@@ -934,7 +934,7 @@ X_test_check['Target'] = pred
 X_final_check = pd.concat([X_train_check, X_test_check])
 
 # Select train (real) data from March 1 to March 22nd
-dates_list = ['2020-03-01', '2020-03-02', '2020-03-03', '2020-03-04', '2020-03-05', '2020-03-06', '2020-03-07', '2020-03-08', '2020-03-09', 
+dates_list = ['2020-03-01', '2020-03-02', '2020-03-03', '2020-03-04', '2020-03-05', '2020-03-06', '2020-03-07', '2020-03-08', '2020-03-09',
                  '2020-03-10', '2020-03-11','2020-03-12','2020-03-13','2020-03-14','2020-03-15','2020-03-16','2020-03-17','2020-03-18',
                  '2020-03-19','2020-03-20','2020-03-21','2020-03-22','2020-03-23']
 
@@ -984,7 +984,7 @@ X_test_check['Target'] = pred
 X_final_check = pd.concat([X_train_check, X_test_check])
 
 # Select train (real) data from March 1 to March 22nd
-dates_list = ['2020-03-01', '2020-03-02', '2020-03-03', '2020-03-04', '2020-03-05', '2020-03-06', '2020-03-07', '2020-03-08', '2020-03-09', 
+dates_list = ['2020-03-01', '2020-03-02', '2020-03-03', '2020-03-04', '2020-03-05', '2020-03-06', '2020-03-07', '2020-03-08', '2020-03-09',
                  '2020-03-10', '2020-03-11','2020-03-12','2020-03-13','2020-03-14','2020-03-15','2020-03-16','2020-03-17','2020-03-18',
                  '2020-03-19','2020-03-20','2020-03-21','2020-03-22','2020-03-23']
 
@@ -1078,7 +1078,7 @@ for c in data2['Country/Region'].unique():
 
 # Aplly exponential transf. and clean potential infinites due to final numerical precision
 data_pred[['Predicted_ConfirmedCases', 'Predicted_Fatalities']] = data_pred[['Predicted_ConfirmedCases', 'Predicted_Fatalities']].apply(lambda x: np.exp(x))
-data_pred.replace([np.inf, -np.inf], 0, inplace=True) 
+data_pred.replace([np.inf, -np.inf], 0, inplace=True)
 
 get_submission(data_pred)
 
@@ -1244,7 +1244,7 @@ lag_size = 30
 
 # Filter country and features from all_data (dataset without data leaking)
 data = all_data.copy()
-features = ['Id', 'Province/State', 'Country/Region', 'Lat', 'Long', 
+features = ['Id', 'Province/State', 'Country/Region', 'Lat', 'Long',
        'ConfirmedCases', 'Fatalities', 'ForecastId', 'Day_num', 'Day', 'Month',
        'Year', 'ConfirmedCases_1', 'ConfirmedCases_2', 'ConfirmedCases_3',
        'ConfirmedCases_4', 'ConfirmedCases_5', 'ConfirmedCases_6',
@@ -1312,7 +1312,7 @@ lag_size = 30
 
 # Filter country and features from all_data (dataset without data leaking)
 data = all_data.copy()
-features = ['Id', 'Province/State', 'Country/Region', 'Lat', 'Long', 
+features = ['Id', 'Province/State', 'Country/Region', 'Lat', 'Long',
        'ConfirmedCases', 'Fatalities', 'ForecastId', 'Day_num', 'Day', 'Month',
        'Year', 'ConfirmedCases_1', 'ConfirmedCases_2', 'ConfirmedCases_3',
        'ConfirmedCases_4', 'ConfirmedCases_5', 'ConfirmedCases_6',
